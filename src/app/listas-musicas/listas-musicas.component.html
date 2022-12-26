@@ -1,0 +1,26 @@
+<div *ngFor="let playlist of playlists; index as i;">
+    <button (click)="deletePlaylist(i)" pButton type="button" label="Delete" icon="pi pi-trash"></button>
+    <p-table [value]="songs[i]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome da música</th>
+                <th>Categoria</th>
+                <th>Data de busca</th>
+                <th>Cidade</th>
+                <th>Temperatura</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-song>
+            <tr>
+                <td>{{song.name}}</td>
+                <td>{{song.category}}</td>
+                <td>{{song.date}}</td>
+                <td>{{song.city}}</td>
+                <td>{{song.temperature}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <br>
+    <br>
+    <br>
+</div>

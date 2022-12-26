@@ -1,0 +1,104 @@
+<p-toast></p-toast>
+
+<div class="all-center" *ngIf="loading">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</div>
+
+<div class="all-center" *ngIf="loadingSongs">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</div>
+
+<section *ngIf="!loading">
+    <div class="weather-container">
+        <form [formGroup]="forms['clima-form']">
+            <div class='form-container'>
+                <input formControlName="clima-form-input" class='styled-input' type="text" name="text" id="textID"
+                    placeholder='Search by city or country' />
+
+                <button (click)="handleSubmit()">
+                    <button pButton type="button" icon="pi pi-search" class="p-button-raised p-button-rounded"></button>
+                </button>
+            </div>
+        </form>
+
+        <article>
+            <div class="info-container" *ngIf="loadingInternal">
+                <div class="spinner">
+                    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+                </div>
+            </div>
+            <div class="info-container" *ngIf="!loadingInternal">
+                <div class='city-container'>
+                    <div *ngIf="icon === 'sun'">
+                        <i class="pi pi-sun" style="font-size: 5rem"></i>
+                    </div>
+
+                    <div *ngIf="icon === 'cloud'">
+                        <i class="pi pi-sun" style="font-size: 5rem"></i>
+                    </div>
+
+                    <div *ngIf="icon === 'rain'">
+                        <i class="pi pi-cloud" style="font-size: 5rem"></i>
+                    </div>
+
+                    <div *ngIf="icon === 'snow'">
+                        <i class="pi pi-cloud" style="font-size: 5rem"></i>
+                    </div>
+
+                    <div>
+                        <div class='city-country'>
+                            {{ city }}, {{ country }}
+                        </div>
+                        <div>
+                            {{ date }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class='temperature'>
+                    <div class='temperature-container'>
+                        <div class="temp-number">
+                            {{ temperature }}
+                        </div>
+                        <div class='temp-icon'>
+                            °C
+                        </div>
+                    </div>
+
+                    <div class='temp-description'>
+                        {{ weatherDescription }}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="shazam-container">
+        <article>
+            <span class="button-container">
+                <button (click)="saveSongs()">
+                    <button pButton type="button" label="Playlist" icon="pi pi-bookmark" styledClass="p-button-sm"
+                        class="p-button-raised p-button-rounded"></button>
+                </button>
+
+                <button [routerLink]="['/listas-musicas']">
+                    <button pButton pRipple type="button" label="⟬ PLAYLIST SALVAS ⟭"
+                        class="p-button-raised next-page"></button>
+                </button>
+            </span>
+
+            <ul>
+                <li *ngFor="let song of songs; index as i;" class="p-button-raised">
+                    <img [src]="song.image" alt="">
+
+                    <strong>{{song.name}}</strong>
+
+                    <div>
+                        <p>{{song.category}}</p>
+                        <p>{{song.date}}</p>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </div>
+</section>
