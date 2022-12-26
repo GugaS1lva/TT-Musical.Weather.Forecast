@@ -61,7 +61,7 @@
 <br>
 <h3 id="links"><strong>Links</strong></h3>
 
-- Live Site URL: [Click-me](https://vercel.app/)
+- Live Site URL: [Click-me](https://tt-musical-weather-forecast.vercel.app/home)
 
 <br>
 <h2 id="meu-processo"><strong>« [Meu Processo] »</strong></h2>
